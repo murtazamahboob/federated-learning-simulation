@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "federated-learning-simulation"
+version = "1.0.0"
+description = "Federated learning simulation in pure NumPy: 10 clients train a small MLP on non-IID label-skewed data, sharing only model updates — FedAvg, FedProx, differential-privacy noise, top-k sparsification and client dropout, benchmarked against centralized and local-only baselines."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{ name = "Murtaza Mahboob" }]
+keywords = [
+    "federated-learning",
+    "fedavg",
+    "fedprox",
+    "differential-privacy",
+    "distributed-machine-learning",
+    "non-iid",
+    "numpy",
+    "python",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy==1.26.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0"]
+
+[project.scripts]
+fedlearn = "fedlearn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
